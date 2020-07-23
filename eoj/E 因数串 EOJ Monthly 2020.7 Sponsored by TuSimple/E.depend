@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1595053660 source:e:\eoj\e\main.cpp
+	<iostream>
+	<stdio.h>
+	<string>
+	<string.h>
+	<stack>
+	<math.h>
+	<vector>
+

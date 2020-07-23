@@ -1,9 +1,0 @@
-# depslib dependency file v1.0
-1575288699 source:e:\code\poj\p1636\main.cpp
-	<iostream>
-	<stdio.h>
-	<string>
-	<string.h>
-	<vector>
-	<cstdio>
-

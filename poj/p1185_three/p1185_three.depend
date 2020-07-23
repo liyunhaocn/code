@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1574940492 source:e:\code\poj\p1185_three\main.cpp
-	<iostream>
-	<stdio.h>
-	<string.h>
-	<stack>
-	<string>
-

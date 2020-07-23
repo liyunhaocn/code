@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1594987332 source:e:\eoj\b\main.cpp
+	<iostream>
+	<algorithm>
+	<math.h>
+	<stdlib.h>
+
