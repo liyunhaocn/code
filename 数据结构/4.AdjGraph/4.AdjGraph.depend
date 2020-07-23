@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1513161169 source:c:\users\lnovo\desktop\github\数据结构\4.adjgraph\main.cpp
+	<iostream>
+	<Queue.h>
+	<stack>
+	<minHeap.h>
+
+1512823926 c:\users\lnovo\desktop\github\数据结构\4.adjgraph\include\queue.h
+	<iostream>
+
+1513071875 c:\users\lnovo\desktop\github\数据结构\4.adjgraph\include\minheap.h
+
+1513656932 source:c:\users\lnovo\desktop\github\coding\数据结构\4.adjgraph\main.cpp
+	<iostream>
+	<Queue.h>
+	<stack>
+	<minHeap.h>
+
+1513656932 c:\users\lnovo\desktop\github\coding\数据结构\4.adjgraph\include\queue.h
+	<iostream>
+
+1513656932 c:\users\lnovo\desktop\github\coding\数据结构\4.adjgraph\include\minheap.h
+

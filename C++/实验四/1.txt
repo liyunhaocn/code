@@ -1,0 +1,189 @@
+#include<iostream>
+using namespace std;
+class myString
+{ 
+public:
+    myString(char *p);      
+    myString(const myString &);
+	myString();
+    ~ myString ();
+	void set();
+    void print(); 
+    char *pStr;
+};
+myString::myString(char *p)
+{
+   pStr=p;
+}
+myString::~myString(){delete []pStr;}
+myString::myString(){pStr=new char[100];}
+void myString::set()
+{
+	cout<<"请输入要建立的字符串"<<endl;
+	cin>>pStr;
+}  
+void myString:: print()
+{
+  cout<<pStr<<endl;
+}
+class String1: public myString
+{
+public:
+  int getlen(const char *str1);
+  int getlen1(const char *str1);
+  char* getStr(char* str2); 
+  void connect(); 
+  void compare(); 
+  int len;
+};
+int String1:: getlen1(const char *str1)
+{
+  for(int i=0;;i++)
+	 {
+	   if(*(str1+i)=='\0')
+		   break;
+	 }
+	 return i;
+}
+ int String1::getlen(const char *str1)
+{
+	 for(int i=0;;i++)
+	 {
+	   if(*(str1+i)=='\0')
+		   break;
+	 }
+	 len=i;
+	 return i;
+}
+
+ char* String1::getStr(char* str2)
+ {
+    cin>>str2;
+	return str2;
+ }
+ void String1:: compare()
+ {   
+	 char*str=new char[100];
+	 cout<<"请输入要比较的字符串"<<endl;
+	 cin>>str;
+	 cout<<"类内数组比该数组长"<<getlen(pStr)-getlen1(str)<<"个单位"<<endl;
+	 delete []str;
+ }
+ void String1:: connect()
+ {   
+	 char*p=new char [100];
+     cout<<"请输入要连接的字符串"<<endl;
+	 cin>>p;
+	 for(int i=0;p[i]!='\0';i++)
+     pStr[i+len]=p[i];
+	 pStr[len+i]='\0';
+     delete []p;
+ 
+ }
+
+ class String2:public String1
+ {
+ public:
+void insert(); 
+void replace();
+void Delete(); 
+void find();
+};
+void String2::insert()
+{
+	int i;
+	char *p=new char [100];
+	print();
+	cout<<"请输入想要插入的字符串"<<endl;
+	cin>>p;
+	int l=getlen1(p);
+	getlen(pStr);
+	cout<<"请输入想要插入的位置"<<endl;
+	cin>>i;
+    for(int j=len+l;j>i;j--)
+	{
+	   pStr[j]=pStr[j-l];
+	}
+   for(int s=i,int m=0;s<i+l,m<l;s++,m++)
+   {
+	pStr[s]=p[m];
+   }
+   delete []p;
+}
+void String2:: replace()
+{
+	char a,b;
+    cout<<"请输入想要替换的字符"<<endl;
+    cin>>a;
+	cout<<"想要替换为"<<endl;
+	cin>>b;
+	for(int i=0;i<getlen(pStr);i++)
+	{
+	   if(pStr[i]==a)pStr[i]=b;
+	}
+}
+
+void String2:: Delete()
+{
+  char a;
+  cout<<"请输入想删除的字符"<<endl;
+  cin>>a;
+  getlen(pStr);
+  for(int i=0;i<len;i++)
+  {
+    while(pStr[i]==a)
+		for(int j=i;j<len;j++)pStr[j]=pStr[j+1];
+  }
+}
+void String2:: find()
+{
+  char*p=new char[100];
+  int counter=0;
+  cout<<"请输入要查找的子串"<<endl;
+  cin>>p;
+   for(int i=0;;i++)
+	 {
+	   if(*(p+i)=='\0')
+		   break;
+	 }
+  getlen(pStr);
+  int flag=1;
+  for(int j=0;j<len;j++)
+  {   
+	  counter=0;
+      for(int k=0;k<i;k++)
+		  if(pStr[j+k]==p[k])counter++;
+		  if(counter==i)
+		  {
+			  cout<<"该子串在第"<<j+1<<"位至第"<<j+i<<"位"<<endl;
+			  flag=0;
+		  }    
+  }
+  if(flag)
+  {
+      cout<<"未找到该子串"<<endl;
+  }
+
+}
+
+
+void main()
+{
+  String1 a;
+  a.set();
+  a.print();
+  a.getlen(a.pStr);
+  cout<<"该字符串的长度为"<<a.len<<endl;
+  a.connect();
+  a.print();
+  a.compare();
+  String2 b;
+  b.set();
+  b.insert();
+  b.print();
+  b.Delete();
+  b.print();
+  b.replace();
+  b.print();
+  b.find();
+}

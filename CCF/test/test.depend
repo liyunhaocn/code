@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1554173841 source:e:\coding\ccf\test\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+

@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1513155039 source:c:\users\lnovo\desktop\github\数据结构\empty\main.cpp
+	<stdio.h>
+	<malloc.h>
+
+1513157845 source:c:\users\lnovo\desktop\github\empty\main.cpp
+	<iostream>
+	<stdio.h>
+	<queue>
+
+1515588547 source:c:\users\lnovo\desktop\github\coding\empty\main.cpp
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+
+1549791757 source:e:\coding\empty\main.cpp
+	<iostream>
+	<stdio.h>
+

@@ -1,0 +1,31 @@
+#include <iostream.h>
+class Animal
+{
+public:
+	Animal():itsWeight(0),itsAge(0){}
+	void show(){cout<<itsWeight<<endl<<itsAge<<endl;}
+private:
+	friend void SetValue(Animal& ta, int tw);
+    friend void SetValue(Animal& ta, int tw, int tn);
+	int itsWeight;
+	int itsAge;
+};
+void SetValue(Animal& ta, int tw)
+{
+	ta.itsWeight=tw;// 设置itsWeight值
+}
+void SetValue(Animal& ta, int tw, int tn)
+{
+	ta.itsWeight=tw;
+	ta.itsAge=tn;// 设置itsWeight和itsAge值
+}
+
+int  main()
+{
+	Animal peppy;
+	SetValue(peppy, 5);
+	peppy.show();
+	SetValue(peppy, 7, 9);
+	peppy.show();
+	return 0;
+}

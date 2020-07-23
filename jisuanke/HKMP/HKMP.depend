@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1545376894 source:e:\coding\jisuanke\hkmp\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+

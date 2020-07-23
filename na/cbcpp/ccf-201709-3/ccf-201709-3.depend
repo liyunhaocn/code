@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1552316930 source:e:\coding\na\cbcpp\ccf-201709-3\main.cpp
+	<iostream>
+	<string>
+	<stdio.h>
+

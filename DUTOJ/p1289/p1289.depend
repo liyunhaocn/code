@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1545533942 source:e:\coding\dutoj\p1289\main.cpp
+	<iostream>
+	<stdio.h>
+	<cstring>
+	<vector>
+	<string>
+	<queue>
+	<stack>
+	<algorithm>
+

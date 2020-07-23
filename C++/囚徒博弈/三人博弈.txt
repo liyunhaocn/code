@@ -1,0 +1,328 @@
+#include <iostream>
+using namespace std;
+class PDRule  
+{
+public:
+	const int R;  //同时合作的奖励R
+	const int S;  //被背叛的损失S
+	const int T;  //背叛的收益T
+	const int P;  //同时背叛的惩罚P
+	PDRule(int R,int S,int T,int P):R(R),S(S),T(T),P(P){}
+	virtual ~PDRule(){}
+	int calculatePayoff(int stra1,int stra2);
+	//根据两个参与博弈者的策略，计算第一个博弈者的收益
+};
+
+int PDRule::calculatePayoff(int stra1,int stra2)
+{  //合作策略为1，背叛策略为0
+   if( stra1==1 && stra2==1 ) return R;       
+   else if ( stra1==1 && stra2==0 ) return S;
+   else if ( stra1==0 && stra2==1 ) return T;
+   else return P;
+}
+
+class Player  
+{
+protected:
+	int oppStra;              // 对手上一轮策略
+	int id;                   // 学号后4位 
+public:
+	Player(){
+		id = 1;               // 学号后4位 
+		oppStra=-1;           // 初始没有对手策略，设置为-1 
+	}     
+	virtual      ~Player(){}
+	virtual int  nextStra();   // 本轮采用的策略
+	virtual void setOppStra(int oppS);// 设置对手上一轮策略
+	virtual void reset(){oppStra=-1;} // 恢复到初始设置
+	virtual int  getID() {return id;} 
+};
+
+void Player::setOppStra(int oppS)
+{
+	oppStra = oppS;
+}
+
+int Player::nextStra()
+{
+    return 1;   // 总是采用合作策略 
+}
+
+class IterationPDG  
+{
+private:
+	Player * player1;
+	Player * player2;
+	int maxTurn;
+	int payoff1;
+	int payoff2;
+	PDRule pdr;
+public:
+	IterationPDG(int maxTurn, Player * p1,Player * p2, PDRule & pdr): maxTurn
+
+(maxTurn),pdr(pdr),player1(p1),player2(p2)
+	  { 
+		  payoff1 = 0;
+          payoff2 = 0;	  
+	  }
+	  virtual ~IterationPDG(){}
+	void start();
+	int getPayoff1(){return payoff1;}
+    int getPayoff2(){return payoff2;}
+};
+
+void IterationPDG::start()
+{
+    player1->reset();
+	player2->reset();
+     for(int i=0;i<maxTurn;i++)
+	 {
+	  int s1 = player1->nextStra();
+      int s2 = player2->nextStra();
+      payoff1 += pdr.calculatePayoff(s1,s2);
+	  payoff2 += pdr.calculatePayoff(s2,s1);
+	  player1->setOppStra(s2);
+	  player2->setOppStra(s1);
+	 }
+}
+
+class Player2077: public Player    //用学号后四位为你的类命名，形如PlayXXXX
+{
+private:
+  
+    /*在此处以多行注释的形式说明你添加的数据的用途
+	* oppHistory用于保存过去2次博弈对手的策略
+	*/
+	int sum_oppscore;//计算对手当前的总分
+	int sum_myscore; //计算我的总分
+	int myoppstra;   //我的上一轮策论
+	int sum_oppstra; //对手的上一轮策略和
+	int i;           //当前局次 
+public :
+	//必须提供无参构造函数
+    Player2077()
+	{   
+		id = 2077;       //命名id 
+		sum_oppscore=0;  //初始化对手当前得分
+		sum_myscore=0;   //初始化我的当前得分
+		myoppstra=1;     //初始化我第一轮的策略
+	    sum_oppstra=0;   //初始化对手上一轮策论和
+	    i=0;             //初始化当前轮次
+	}   
+	
+	
+	/*一、统计对手和我的当前得分，若对方的分数减去我的分数小于等于2，下一轮合作，否
+
+则背叛
+      二、*/
+	int nextStra()    //重新定义该函数，让你的Player按照你的逻辑博弈
+	{ 
+		i++;
+        if(i<=21)
+		{
+	 	    if (sum_oppscore-sum_myscore<=14)
+			{   
+			myoppstra=1;
+			return 1;
+			}
+			else 
+			{
+				myoppstra=0;
+				return 0 ;
+			}
+		}
+		
+		else if(i>21 && i<100)
+            if (sum_oppscore-sum_myscore<=10)
+			{   
+			   myoppstra=1;
+			   return 1;
+			}
+			else 
+			{
+				myoppstra=0;
+				return 0 ;
+			}
+		else 
+		{
+		  if (sum_oppscore-sum_myscore<=8)
+			{   
+			   myoppstra=1;
+			   return 1;
+			}
+			else 
+			{
+				myoppstra=0; 
+				return 0 ;
+			} 
+		}
+		
+	
+	}
+    
+	void setOppStra(int oppS)
+	{
+		sum_oppstra+=oppS;
+		if(oppS==1 && myoppstra==1)
+		{
+	     sum_oppscore+=3;
+         sum_myscore+=3;
+		}
+		else if(oppS==1 && myoppstra==0)
+		{
+	     sum_oppscore+=5;
+         sum_myscore+=0;
+		}
+		else if(oppS==0 && myoppstra==1)
+		{
+	     sum_oppscore+=5;
+         sum_myscore+=0;
+		}
+		else
+		{
+	     sum_oppscore+=1;
+         sum_myscore+=1;
+		}
+
+	}
+
+	void reset()   // 恢复到初始设置
+	{
+		Player::reset();
+		sum_oppscore=0;  
+		sum_myscore=0;   
+		myoppstra=1;
+	    sum_oppstra=0; 
+	    i=0;           
+             //对新添加的数据进行reset
+	} 
+}; 
+
+
+class Player2392: public Player    //用学号后四位为你的类命名，形如PlayXXXX
+{
+private:
+
+    /*在此处以多行注释的形式说明你添加的数据的用途
+	* oppHistory用于保存过去2次博弈对手的策略
+	*/
+	int oppHistory[2];
+public :
+	//必须提供无参构造函数
+    Player2392()
+	{
+		id = 2392;            //命名id
+		oppHistory[0]=-1;     //初始化对手策略历史
+		oppHistory[1]=-1;
+	}
+
+	/*在此处以多行注释的形式说明博弈的逻辑
+	* 若上一局得分为T/R则继续采用相同策略，若上局得分为P/S则换策略。
+	*/
+	int nextStra()    //重新定义该函数，让你的Player按照你的逻辑博弈
+	{
+        int myhistory;
+	    if ( oppHistory[0] == -1 && oppHistory[1] == -1 ) {
+            myhistory = 0;
+            return 0 ;
+	    }
+        else {
+            if(myhistory == 1 && oppHistory[1] == 1) {
+                myhistory = 1;
+                return 1;
+            }
+            if(myhistory == 1 && oppHistory[1] == 0) {
+                myhistory = 0;
+                return 0;
+            }
+            if(myhistory == 0 && oppHistory[1] == 1) {
+                myhistory = 0;
+                return 0;
+            }
+            if(myhistory == 0 && oppHistory[1] == 0) {
+                myhistory = 1;
+                return 1;
+            }
+      }
+	}
+
+	/*更新保存的博弈信息
+	*/
+	void setOppStra(int oppS)
+	{
+		Player::setOppStra(oppS);
+		oppHistory[0] = oppHistory[1];
+		oppHistory[1] = oppS;
+
+	}
+
+	void reset()   // 恢复到初始设置
+	{
+		Player::reset();
+        oppHistory[0]=-1;
+		oppHistory[1]=-1;       //对新添加的数据进行reset
+	}
+};
+class Player520: public Player    //用学号后四位为你的类命名，形如PlayXXXX
+{
+private:
+	int i;
+public :
+    Player520()
+	{
+		i=0;
+      id=520;
+	}
+	int nextStra()    
+	{     
+			
+           return 0;
+		
+		 
+
+	}
+	void setOppStra(int oppS)
+	{
+		i++;
+         cout<<i%2<<endl;
+	}
+	void reset() 
+	{
+	  i=0;
+	}
+};
+
+
+int main()
+{
+	Player2077 player2077;   //派生类对象1 
+	Player2392 player2392;   //派生类对象2
+	Player520  player520 ;
+	Player * players [3] ;   //将所有博弈者收集到基类数组（异类收集） 
+	players [0] = & player2077 ;
+	players [1] = & player520;
+	players [2] = & player2392 ;
+	int payoffs[3]={0,0,0};
+	
+	PDRule pdr(3,0,5,1);  //int R,int S,int T,int P
+	
+	int maxTurn = 1000;  //该值在最后博弈时可能是100-1000中的任意值 
+	
+	for( int i = 0 ; i < 3 ; i++) {
+		for( int j = 0 ; j < 3 ; j++){
+			if ( i<j ){
+			IterationPDG ipdg( maxTurn, players[i], players[j], pdr);
+			ipdg.start();
+			payoffs[i] += ipdg.getPayoff1();
+			payoffs[j] += ipdg.getPayoff2();
+			}
+		}
+	}
+	
+	for(int j=0;j<3;j++)
+	{
+	cout<<players[j]->getID()<<" : "<<payoffs[j]<<endl;
+	}
+return 0;
+}
+

@@ -1,0 +1,120 @@
+#include<iostream>
+#include<windows.h>
+using namespace std;
+class clock
+{
+private:
+   int hour,minute,second;
+   char c;
+public:
+	
+	clock(int h=0,int m=0,int s=0)
+	{
+	   hour=h;
+	   minute=m;
+	   second=s;
+	}
+	void repair(clock & t)
+	{
+	     cout<<"what you want to repair h,m or s"<<endl;
+         cin>>c;
+         cout<<"please input it"<<endl;
+         if(c=='h')
+		 {   
+	      cin>>hour;
+	      if(hour>=0 && hour<=23)
+		  {   		  
+		  t.seth( hour);
+		  }
+	      else
+		    cout<<"error"<<endl;
+		 }
+           if(c=='m')
+		   {   
+	        cin>>hour;
+	        if(minute>=0 && minute<=59)
+			{   		  
+		       t.setm(minute);
+			}
+	        else
+		       cout<<"error"<<endl;
+		   }
+         if(c=='s')
+		 {   
+	          cin>>second;
+	          if(second>=0 && second<=59)
+			  {   		  
+		           t.sets( second);
+			  }
+	         else
+		     cout<<"error"<<endl;
+		 }
+	}
+    void set(clock &t)
+	{
+        cout<<"please input time"<<endl;
+        cin>>hour>>minute>>second;
+        if(hour>=0 && hour<=23 && minute>=0 && minute<=59 && second>=0 && second<=59)
+		{
+            t.seth(t.hour);
+			t.setm(t.minute);
+			t.sets(t.second);
+		}
+        else
+	       cout<<"error"<<endl;
+	}
+	void seth(int h)
+	{
+       hour=h;
+	}
+	void setm(int m)
+	{
+	   minute=m;
+	}
+	void sets(int s)
+	{
+	   second=s;
+	}
+	void tick(clock &a)
+	{
+	  a.second+=1;
+	  if(a.second==60)
+	  {
+	    a.second=0;
+		a.minute+=1;
+		if(a.minute==60)
+		{
+	      a.minute=0;
+	      a.hour+=1;
+		  if(a.hour==24)
+		  {
+		    a.hour=0;
+		  }
+		}
+
+	  }
+	
+	}
+	void disp()
+	{
+	  cout<<hour<<' ';
+	  cout<<minute<<' ';
+	  cout<<second<<' ';
+	  cout<<endl;
+	}
+};
+int main()
+{ 
+  int i;
+  clock t;
+  t.set(t);
+  for(i=0;i<100;i++)
+  {
+	  t.tick(t);
+      t.disp();
+	  Sleep(1000);
+  }
+  t.repair(t);
+  t.disp();
+return 0;
+}

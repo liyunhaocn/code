@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1507909259 source:c:\users\lnovo\desktop\github\数据结构\第二章\calculator_zhan中缀直接计算\main.cpp
+	<iostream>
+	<string.h>
+	<stdlib.h>
+

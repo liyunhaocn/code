@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1551317267 source:e:\coding\poj\test\main.cpp
+	<iostream>
+
+1575277203 source:e:\code\poj\test\main.cpp
+	<iostream>
+	<vector>
+	<stdio.h>
+	<string.h>
+

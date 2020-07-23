@@ -1,0 +1,79 @@
+# depslib dependency file v1.0
+1508315379 source:c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\main.cpp
+	<iostream>
+	"Simulater.h"
+
+1508321065 c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\include\simulater.h
+	<iostream>
+	<queue>
+	<vector>
+	<windows.h>
+	"NormalUser.h"
+	"User.h"
+	"VIPUser.h"
+	"OfficialUser.h"
+	"NormalBankWindow.h"
+	"VIPBankWindow.h"
+	"OfficialBankWindow.h"
+
+1508313985 c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\include\normaluser.h
+	"User.h"
+
+1508314005 c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\include\user.h
+
+1508314116 c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\include\vipuser.h
+	"User.h"
+
+1508314252 c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\include\officialuser.h
+	"User.h"
+
+1508314568 c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\include\normalbankwindow.h
+	"User.h"
+	"BankWindow.h"
+
+1508314470 c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\include\bankwindow.h
+	"User.h"
+
+1508314646 c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\include\vipbankwindow.h
+	"User.h"
+	"BankWindow.h"
+
+1508314717 c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\include\officialbankwindow.h
+	"User.h"
+	"BankWindow.h"
+
+1508321096 source:c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\src\bankwindow.cpp
+	"BankWindow.h"
+	<iostream>
+
+1508320694 source:c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\src\normalbankwindow.cpp
+	"NormalBankWindow.h"
+	<iostream>
+
+1508316802 source:c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\src\normaluser.cpp
+	"NormalUser.h"
+	<iostream>
+
+1508320694 source:c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\src\officialbankwindow.cpp
+	"OfficialBankWindow.h"
+	<iostream>
+
+1508314252 source:c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\src\officialuser.cpp
+	"OfficialUser.h"
+	<iostream>
+
+1508320547 source:c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\src\simulater.cpp
+	"Simulater.h"
+
+1508320806 source:c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\src\user.cpp
+	"User.h"
+	<iostream>
+
+1508320695 source:c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\src\vipbankwindow.cpp
+	"VIPBankWindow.h"
+	<iostream>
+
+1508314148 source:c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号系统\src\vipuser.cpp
+	"VIPUser.h"
+	<iostream>
+

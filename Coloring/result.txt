@@ -1,0 +1,15 @@
+test.col: 3
+DSJC125.1.col: 8
+DSJC125.5.col: 31
+DSJC250.1.col: 15
+DSJC250.5.col: 50
+DSJR500.1.col: 16
+test.col: 3
+DSJC125.1.col: 9
+DSJC125.5.col: 29
+DSJC125.9.col: 67
+DSJC250.1.col: 14
+DSJC250.5.col: 53
+DSJC250.9.col: 119
+DSJC500.1.col: 28
+

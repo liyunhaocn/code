@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+class Point
+{
+public:
+        Point( int a= 0, int b = 0 ):x(a),y(b){}
+        void setPoint(int a,int b)
+        {
+            x=a;y=b;
+        }
+        double operator -(const Point &p);
+        friend double operator -(Point &p1,Point&p2);
+        friend ostream & operator <<(ostream & out,const Point& p){cout<<"["<<p.x<<","<<p.y<<"]";return out;}
+private:
+        int x, y;
+};
+double Point::operator-(const Point &p)
+{
+    return pow((this->x-p.x)*(this->x-p.x)+(this->y-p.y)*(this->y-p.y),0.5);
+}
+double operator -(Point &p1,Point&p2)
+{
+   return pow((p2.x-p1.x)*(p2.x-p1.x)+(p2.y-p1.y)*(p2.y-p1.y),0.5);
+}
+int main()
+{
+   Point p1(2,1),p2;
+   double d = p1-p2;
+   cout<<p1<<"->"<< p2<< " = "<<d<<endl;
+   return 0;
+}

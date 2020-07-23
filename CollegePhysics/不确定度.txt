@@ -1,0 +1,109 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+    double a[5]={0};
+    double du,fen,Dingaverage,Minaverage,Naverage,sum=0;
+    double Auntain[4];
+    double a_uncertain,b_uncertain=0.0166666666,ab_uncertain=0;
+    double aZuntain,bZuntain,DingZuntain,MinZuntain,Nuntain;
+    const double pi=3.1415926;
+    bZuntain=sqrt(b_uncertain*b_uncertain+b_uncertain*b_uncertain+b_uncertain*b_uncertain+b_uncertain*b_uncertain)/4;
+    cout<<"顶角的不确定度"<<endl;
+    for(int j=0;j<4;j++)
+    {
+       sum=0;
+        for(int i=0;i<5;i++)
+        {
+            cout<<"输入第"<<i+1<<"个角度的度及分"<<endl;
+            cin>>du>>fen;
+            a[i]=du+fen/60;
+            sum+=a[i];
+        }
+        Dingaverage=sum/5;
+        cout<<"平均值"<<Dingaverage<<endl;
+        sum=0;
+        for(int i=0;i<5;i++)
+        {
+            sum+=(a[i]-Dingaverage)*(a[i]-Dingaverage);
+        }
+        sum=sum/20;
+        sum=2.78*sqrt(sum);
+        a_uncertain=sum;
+        Auntain[j]=a_uncertain;
+        ab_uncertain=sqrt(a_uncertain*a_uncertain+b_uncertain*b_uncertain);
+        cout<<"角"<<j+1<<"a类不确定度"<<a_uncertain*60<<"分"<<endl;
+        cout<<"角"<<j+1<<"b类不确定度"<<b_uncertain*60<<"分"<<endl;
+        cout<<"角"<<j+1<<"总不确定度"<<ab_uncertain*60<<"分"<<endl;
+
+    }
+    sum=0;
+    for(int i=0;i<4;i++)
+    {
+        Auntain[i]=Auntain[i]*Auntain[i];
+        sum+=Auntain[i];
+    }
+    sum=sqrt(sum)/4;
+    aZuntain=sum;
+    DingZuntain=sqrt(aZuntain*aZuntain+bZuntain*bZuntain);
+    cout<<endl<<endl;
+    cout<<"顶角总不确定度"<<DingZuntain*60<<"分"<<endl;
+
+
+    cout<<"底角的不确定度"<<endl;
+    for(int j=0;j<4;j++)
+    {
+       sum=0;
+        for(int i=0;i<5;i++)
+        {
+            cout<<"输入第"<<i+1<<"个角度的度及分"<<endl;
+            cin>>du>>fen;
+            a[i]=du+fen/60;
+            sum+=a[i];
+        }
+        Minaverage=sum/5;
+        cout<<"平均值"<<Minaverage<<endl;
+        sum=0;
+        for(int i=0;i<5;i++)
+        {
+            sum+=(a[i]-Minaverage)*(a[i]-Minaverage);
+        }
+        sum=sum/20;
+        sum=2.78*sqrt(sum);
+        a_uncertain=sum;
+        Auntain[j]=a_uncertain;
+        ab_uncertain=sqrt(a_uncertain*a_uncertain+b_uncertain*b_uncertain);
+        cout<<"角"<<j+1<<"a类不确定度"<<a_uncertain*60<<"分"<<endl;
+        cout<<"角"<<j+1<<"b类不确定度"<<b_uncertain*60<<"分"<<endl;
+        cout<<"角"<<j+1<<"总不确定度"<<ab_uncertain*60<<"分"<<endl;
+
+    }
+    sum=0;
+    for(int i=0;i<4;i++)
+    {
+        Auntain[i]=Auntain[i]*Auntain[i];
+        sum+=Auntain[i];
+    }
+    sum=sqrt(sum)/4;
+    aZuntain=sum;
+    MinZuntain=sqrt(aZuntain*aZuntain+bZuntain*bZuntain);
+    cout<<endl<<endl;
+    cout<<"最小偏向角总不确定度"<<MinZuntain*60<<"分"<<endl;
+
+
+    cout<<"折射率的不确定度"<<endl;
+    double jiao1=(Dingaverage/180*pi+Minaverage/180*pi)/2;
+    double jiao2=Dingaverage/180*pi/2;
+    Naverage=sin(jiao1)/sin(jiao2);
+    cout<<"折射率"<<Naverage<<endl;
+    jiao1=tan(pi/2-jiao1);
+    jiao2=tan(pi/2-jiao2);
+    sum=(jiao1-jiao2)*(jiao1-jiao2)*DingZuntain*DingZuntain+jiao1*jiao1*MinZuntain*MinZuntain;
+    sum=sqrt(sum);
+    sum=Naverage*sum;
+    Nuntain=sum;
+    cout<<"n的不确定度"<<Nuntain<<endl;
+    return 0;
+}

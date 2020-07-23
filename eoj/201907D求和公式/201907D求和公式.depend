@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1565366605 source:e:\coding\eoj\201907d求和公式\main.cpp
+	<iostream>
+	<stdio.h>
+	<string>
+	<vector>
+	<math.h>
+	<stdlib.h>
+

@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1574750478 source:e:\code\poj\p1185_four\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+	<stack>
+	<string>
+

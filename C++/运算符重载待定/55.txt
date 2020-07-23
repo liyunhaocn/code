@@ -1,0 +1,96 @@
+# include <iostream>
+# include <stdlib.h>
+#include<string.h>
+using namespace std;
+class String
+{
+public:
+	String();
+	String(char *s);
+	void set(char * newstr);
+    String operator + (String &str2);
+	bool operator < (String &str2);
+	friend ostream& operator<<(ostream& out, String& t);
+	friend istream& operator>>(istream& input, String& t);
+	String operator ()(int a, int b);
+
+	char str[100];
+	int len;
+};
+String::String(){}
+String::String(char * s)
+{
+	len=strlen(s);
+	strcpy(str,s);
+	str[len]='\0';
+}
+bool String::operator < (String &str2)
+{
+	if(strcmp(str,str2.str)<0)
+		return true;
+	else
+		return false;
+}
+void String::set(char * newstr)
+{
+	len=strlen(newstr);
+	strcpy(str,newstr);
+	str[len]='\0';
+}
+
+String String::operator + (String &str2)
+{
+	String ret;
+	strcpy(ret.str,str);
+	strcat(ret.str,str2.str);
+	ret.len=len+str2.len;
+	ret.str[ret.len]='\0';
+	return ret;
+}
+ostream& operator<<(ostream& out, String& t)
+{
+	out<<t.str;
+	return out;
+}
+istream& operator>>(istream& input, String& t)
+{
+	input>>t.str;
+	return input;
+}
+String String::operator ()(int a,int b)
+{
+	String ret;
+	int i;
+	for(i=0;i<=b-a;i++)
+	{
+		ret.str[i]=str[a+i];
+	}
+    ret.str[i]='\0';
+	return ret;
+}
+int main()
+{
+	String str1;
+	str1.set("It is a ");
+	cout<<"***"<<endl;
+	String str2("good idea ");
+	cout<<"*****"<<endl;
+	String str3 = str1+str2;
+
+	cout<<"***"<<endl;
+	cout<<str3<<endl;
+	if(str1<str2)
+		cout<<"str1<str2"<<endl;
+	else
+		cout<<"str1>str2"<<endl;
+	String str5;
+	str5=str3(8,15);
+	cout<<str5<<endl;
+    cout<<"Please input string"<<endl;
+	String str4;
+	cin>>str4;
+	cout<<str4<<endl;
+	return 0;
+}
+
+

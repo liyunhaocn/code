@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1530968731 source:e:\desktop\current\coding\dutoj\20180627warmupd\main.cpp
+	<iostream>
+	<stdio.h>
+	<cstring>
+	<string.h>
+

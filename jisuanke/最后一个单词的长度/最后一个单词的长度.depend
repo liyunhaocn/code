@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1545139174 source:e:\coding\jisuanke\最后一个单词的长度\main.cpp
+	<iostream>
+	<string>
+	<stdio.h>
+	<malloc.h>
+

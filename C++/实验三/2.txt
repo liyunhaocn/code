@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+class Carlo 
+{
+private:
+       int weight;
+	   int money;
+public:
+	  static int sum_money;
+      static int sum_weight; 
+	    Carlo( int, int);
+		~Carlo();		
+};
+int Carlo::sum_money=0;   
+int Carlo::sum_weight=0;
+Carlo::Carlo(int weight,int money)
+{
+	
+	this->weight=weight;
+    this->money=money;
+	sum_money+=money;
+    sum_weight+=weight;
+	cout<<"The sum of weight is"<<endl<<sum_weight<<endl<<"The sum of money is"<<endl<<sum_money<<endl;
+}
+Carlo::~Carlo()
+{
+ 
+	
+	sum_money-=money;
+    sum_weight-=weight;
+	cout<<"The sum of weight is"<<endl<<sum_weight<<endl<<"The sum of money is"<<endl<<sum_money<<endl;
+}
+
+int main()
+{
+	char b;
+	int jn,jz,jq;
+	int i;
+	   cout<<"Please input number"<<endl;
+	   cin>>jn;
+	       cout<<"Please input weight and the money"<<endl;
+		   cin>>jz>>jq;
+		   Carlo a1(jz,jq);
+		   cout<<"Please input weight and the money"<<endl;
+		   cin>>jz>>jq;
+		   Carlo a2(jz,jq);
+		   cout<<"Please input weight and the money"<<endl;
+		   cin>>jz>>jq;
+		   Carlo a3(jz,jq);
+	
+    
+	return 0;
+}

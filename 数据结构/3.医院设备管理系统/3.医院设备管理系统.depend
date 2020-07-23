@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1512553015 source:c:\users\lnovo\desktop\github\数据结构\3.医院设备管理系统\main.cpp
+	<iostream>
+	<string>
+	<algorithm>
+	<time.h>
+	<stack>
+	<queue>
+

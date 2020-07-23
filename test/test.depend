@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1556276624 source:e:\coding\test\main.cpp
+	<iostream>
+	<vector>
+
+1582027798 source:e:\code\test\main.cpp
+	<iostream>
+	<vector>
+	<set>
+	<string>
+	<fstream>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<stack>
+	<algorithm>
+	<queue>
+	<sstream>
+	<cstdlib>
+	<random>
+	<chrono>
+	<limits.h>
+	<map>
+	<stdio.h>
+	<ctime>
+	<thread>
+	<future>
+

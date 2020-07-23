@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1525264397 source:e:\desktop\current\coding\dutoj\p1105\main.cpp
+	<iostream>
+	<stdio.h>
+	<math.h>
+

@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1550413506 source:e:\coding\test2\main.cpp
+	<iostream>
+	<string>
+	<typeinfo>
+	<stack>
+	<vector>
+

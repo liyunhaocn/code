@@ -1,0 +1,193 @@
+1.用指针作为函数的形参，编写字符串复制函数，不允许使用标准函数，用字符数组实现。
+2.编写函数，通过指针链接两个字符串，不允许用标准函数，用字符数组实现。
+3.删除字符串str1中的所有字串str2，如str1=”abcdabac”,str2=”ab”, 计算结果为str1=”cdac”.
+4.把字符串str1中的所有子串str2替换为str3，图str1=”abcdabac”,str2=”ab”,str3=”xyz”,计算结果为str1=”xyzcdxyzac”。注意替换过程中新产生的str2不可以被替换。
+5.编写一个书名排序程序，输入十个书名存入一个二维字符数组，用函数void sortStr( char )实现他们的字典顺序，在main函数中输出结果。
+
+1,
+#include<stdio.h>
+char * f(char a[],char b[],int n )
+{
+	
+	char *p,*o;
+	int i;
+	p=a;
+	o=b;
+	for (i=0;i<n;i++)
+	{
+		*o=*p;
+		p++;
+		o++;
+	}
+	return b;
+}
+int main(){
+	int i;
+    char a[4]="abc";
+	char b[4];
+	char *p;
+    p=f(a,b,4);
+	
+	for(i=0;i<3;i++){
+		printf("%c",b[i]);
+		p++;
+	}
+	
+}
+
+2.
+#include<stdio.h>
+char * f(char a[],int n1,char b[],int n2,char c[],int n3)
+{
+	
+	char *p,*o;
+	int i;
+	p=a;
+	o=c;
+	for(i=0;i<n1;i++)
+	{
+		*o=*p;
+		p++;
+		o++;
+	}
+	p=b;
+	for (i=0;i<n2;i++)
+	{
+		*o=*p;
+		p++;
+		o++;
+	}
+	return b;
+}
+int main(){
+	int i;
+    char a[4]="abc";
+	char b[4]="def";
+	char c[7];
+	char *p;
+    p=f(a,3,b,3,c,7);
+	
+	for(i=0;i<6;i++){
+		printf("%c",c[i]);
+		p++;
+	}
+	
+}
+
+3.
+#include<stdio.h>
+int main(){
+	int i=0,j,k1=0,k2=0,m=0,i1,l=0;
+    char a[100]={'\0'};
+	char b[100]={'\0'};
+	printf("请输入第一个字符串");
+	gets(a);
+	printf("请输入要删除的字符串");
+	gets(b);
+	k1=strlen(a);
+	k2=strlen(b);
+	for(i=0;i<k1;i++){
+		for(j=0;j<k2;j++){
+                m=0;
+			if(a[i+j]==b[j])
+				m++;
+        }
+		if(m==k2){
+                k1=strlen(a);
+			for(i1=i;i1<k1;i1++)
+				a[i1]=a[i1+k2];
+		}
+	}
+    k1=strlen(a);
+	for(i=0;i<k1;i++){
+		printf("%c",a[i]);
+
+	}
+	printf("\n");
+}
+
+
+
+4
+#include<stdio.h>
+int main(){
+	int i=0,j,k1=0,k2=0,k3=0,m=0,i1,l=0,i2,i3=0,k0;
+    char a[100];
+    char b[100];
+	char c[100];
+	printf("请输入第一个字符串\n");
+	gets(a);
+	printf("请输入要查找的字符串\n");
+	gets(b);
+	printf("请输入要替换的字符串\n");
+	gets(c);
+	k1=strlen(a);
+	k2=strlen(b);
+	k3=strlen(c);
+	k0=k3-k2;
+	for(i=0;i<k1;i++){
+		       m=0;
+		      for(j=0;j<k2;j++){
+				  if(a[i+j]==b[j])
+					  m++;
+				  }
+              if(m==k2){
+			       k1=strlen(a);
+				  for(i1=k1;i1>=i;i1--){
+				     a[i1+k0]=a[i1];
+				  }
+				  for(i2=i,i3=0;i2<i+k3,i3<k3;i2++,i3++){
+				  a[i2]=c[i3];
+				  l++;
+				  }
+			   }
+	}
+	k1=strlen(a);
+	for(i=0;i<k1;i++){
+	printf("%c",a[i]);
+	}
+ printf("\n");
+ return 0;
+}
+
+
+5
+#include<stdio.h>
+#include<string.h>
+void sortStr(char p1[10][20])
+{
+	int i, j, flag;
+	char p[10];
+	for (i = 0; i<9; i++)
+	{
+		flag = i;
+		for (j = i + 1; j<10; j++)
+		{
+			if (strcmp(p1[flag], p1[j])>0)
+				flag = j;
+		}
+		if (flag != i)
+		{
+			strcpy(p, p1[i]);
+			strcpy(p1[i], p1[flag]);
+			strcpy(p1[flag], p);
+		}
+	}
+}
+int main()
+{
+	char p1[10][20];
+	int i;
+	for (i = 0; i<10; i++)
+	{
+		printf("请输入第%d本书的名称：", i + 1);
+		gets(p1[i]);
+	}
+	printf("\n");
+	sortStr(p1);
+	for (i = 0; i<10; i++)
+	{
+		printf("第%d本书为：", i + 1);
+		puts(p1[i]);
+	}
+}

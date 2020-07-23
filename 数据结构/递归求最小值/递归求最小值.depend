@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1509537723 source:c:\users\lnovo\desktop\github\数据结构\递归求最小值\main.cpp
+	<iostream>
+	<algorithm>
+

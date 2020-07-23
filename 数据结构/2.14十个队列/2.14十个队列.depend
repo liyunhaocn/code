@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1508328885 source:c:\users\lnovo\desktop\github\数据结构\第二章\2.14十个队列\main.cpp
+	<iostream>
+	"LinkList.h"
+
+1508328041 source:c:\users\lnovo\desktop\github\数据结构\第二章\2.14十个队列\src\linklist.cpp
+	"LinkList.h"
+
+1508329084 c:\users\lnovo\desktop\github\数据结构\第二章\2.14十个队列\include\linklist.h
+	<iostream>
+
+1522765005 source:e:\coding\数据结构\2.14十个队列\main.cpp
+	<iostream>
+	"LinkList.h"
+
+1522765005 e:\coding\数据结构\2.14十个队列\include\linklist.h
+	<iostream>
+
+1522765005 source:e:\coding\数据结构\2.14十个队列\src\linklist.cpp
+	"LinkList.h"
+

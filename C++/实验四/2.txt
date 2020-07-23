@@ -1,0 +1,174 @@
+#include<iostream>
+using namespace std;
+class Myarray
+{
+public:
+  int *alist;
+  int length;
+Myarray( int leng);
+/*Myarray()
+{
+  cout<<"Myarray正在默认构造"<<endl;
+}*/
+Myarray(const Myarray&);
+ ~Myarray();
+ void input();
+ void display();
+};
+Myarray::Myarray(int leng)
+{
+	cout<<"Myarray正在构造"<<endl;
+	if(leng<=0)
+	{
+	  length=0;
+	  alist=NULL;
+	  cout<<"数组长度小于1，建立失败"<<endl;
+	}
+	else
+	{
+	  length=leng;
+	  alist=new int [leng];
+	}
+}
+
+Myarray::Myarray(const Myarray&p)
+{
+	  alist=new int [p.length];
+	  for(int i=0;i<length;i++)
+	  {
+		  alist[i]=p.alist[i];
+	  }
+	  length=p.length;
+}
+
+Myarray::~Myarray()
+{
+	cout<<"Myarray正在析构"<<endl;
+	  delete[] alist;
+}
+void Myarray::input()
+{
+	for(int i=0;i<length;i++)
+	{
+		cout<<"请输入数组的第"<<i+1<<"个元素"<<endl;
+		cin>>alist[i];
+	}
+}
+void Myarray::display()
+{
+  cout<<"该数组为"<<endl;
+  for(int i=0;i<length;i++)
+	{
+		cout<<alist[i]<<" ";
+	}
+    cout<<endl;
+}
+class averarray: virtual public Myarray
+{
+public:
+	int sum;
+	int average1;
+	averarray(int n,int sum=0,int average1=0):Myarray(n)
+{
+	cout<<"averarray正在构造"<<endl;	  
+	this->sum=sum;
+	this->average1=average1;
+
+}
+	~averarray();
+	void sum1();
+	void average();
+	void display();
+};
+averarray::~averarray()
+{
+   cout<<"averarray正在析构"<<endl;
+}
+
+void averarray::sum1()
+{
+	sum=0;
+	for(int i=0;i<length;i++)
+	{
+		sum+=alist[i];
+	}
+}
+void averarray:: average()
+{
+    average1=sum/length;
+}
+void averarray::display()
+{
+  cout<<"该数组为"<<endl;
+  for(int i=0;i<length;i++)
+	{
+		cout<<alist[i]<<" ";
+	}
+    cout<<endl;
+	cout<<"数组所有元素和为"<<endl;
+	cout<<sum<<endl;
+	cout<<"数组所有元素平均数为"<<endl;
+	cout<<average1<<endl;
+}
+
+class revarray: virtual public Myarray
+{
+public:
+	revarray(int n):Myarray(n)
+{
+		cout<<"revarray正在构造"<<endl;
+}
+	  ~revarray();
+      void rev();
+};
+revarray::~revarray()
+{
+  cout<<"revarray正在析构"<<endl;
+}
+void revarray::rev()
+{
+ int temp;
+ cout<<"数组倒序中。。。"<<endl;
+ for(int i=0;i<length/2;i++)
+ {
+   temp=alist[i];
+   alist[i]=alist[length-1-i];
+   alist[length-1-i]=temp;
+ }
+}
+class Safearray:public revarray,public averarray
+{
+public:
+	Safearray(int n,int sum=0,int average1=0):revarray(n),averarray(n,sum,average1),Myarray(n)
+	{
+		cout<<"Safearray正在构造"<<endl;
+	}
+	~Safearray(){}
+	
+};
+
+int main()
+{
+  /*Myarray a(10);
+  a.input();
+  a.display();
+  averarray b(10);
+  b.input();
+  b.sum1();
+  b.average();
+  b.display();
+  revarray c(10);
+  c.input();
+  c.display();
+  c.rev();
+  c.display();*/
+  Safearray d(10);
+  d.input();
+  d.Myarray::display();
+  d.sum1();
+  d.average();
+  d.averarray::display();
+  d.rev();
+  d.Myarray::display();
+return 0;
+}

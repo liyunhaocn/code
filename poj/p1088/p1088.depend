@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1574759333 source:e:\code\poj\p1088\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+	<iostream>
+	<stdio.h>
+	<string.h>
+	<queue>
+

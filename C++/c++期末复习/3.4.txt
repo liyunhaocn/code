@@ -1,0 +1,50 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+class fen
+{
+private:
+	int x,y;
+public:
+	fen(int X=0,int Y=0):x(X),y(Y){}
+	void add(fen &a);
+	void sub(fen &a);
+	void yue();
+	void disp();
+};
+void fen:: add(fen &t)
+{
+      x=(x*t.y+y*t.x);
+	  y=y*t.y;
+}
+void fen:: sub(fen &t)
+{
+   x=(x*t.y-y*t.x);
+	  y=y*t.y;
+}
+void fen:: yue()
+{
+   int i=2;
+   for(i=2;i<x && i<y;i++)
+   {
+	   while(x%i==0 && y%i==0)
+	   {
+		  x=x/i;
+	      y=y/i;
+	   }
+   }
+}
+void fen:: disp()
+{
+cout<<"此分数为"<<x<<"/"<<y<<endl;
+}
+
+int main()
+{
+	fen a(1,2);
+	fen b(3,4);
+	b.add(a);
+	b.yue();
+	b.disp();
+	  return 0;
+}

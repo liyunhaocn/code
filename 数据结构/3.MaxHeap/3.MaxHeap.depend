@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1511950980 source:c:\users\lnovo\desktop\github\数据结构\3.maxheap\main.cpp
+	<iostream>
+	<windows.h>
+

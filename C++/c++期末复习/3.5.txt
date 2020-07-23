@@ -1,0 +1,41 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+class fen
+{
+private:
+	int *p;
+public:
+	fen(){p=new int [10];}
+	~fen()
+	{
+		cout<<"***********"<<endl;
+		delete []p;
+	}
+	void set()
+	{
+		for(int i=0;i<10;i++)
+		{
+		  cout<<"please input NO."<<i+1<<"number"<<endl;
+		  cin>>p[i];
+		}
+	}
+	void disp()
+	{
+	  for(int i=0;i<10;i++)
+		{
+		  cout<<p[i]<<" ";
+		  
+		}
+	  cout<<endl;
+	}
+	
+};
+
+int main()
+{
+	fen a;
+	a.set();
+	a.disp();
+	  return 0;
+}

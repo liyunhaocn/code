@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1512555631 source:c:\users\lnovo\desktop\github\数据结构\3.测试1\main.cpp
+	<iostream>
+	<windows.h>
+	"Queue.h"
+	"Stack.h"
+
+1512555476 c:\users\lnovo\desktop\github\数据结构\3.测试1\include\queue.h
+	<iostream>
+
+1512555533 c:\users\lnovo\desktop\github\数据结构\3.测试1\include\stack.h
+	<iostream>
+

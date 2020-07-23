@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1511194755 source:c:\users\lnovo\desktop\github\数据结构\3.树\main.cpp
+	<iostream>
+	<windows.h>
+	"Queue.h"
+	"Stack.h"
+
+1509627847 c:\users\lnovo\desktop\github\数据结构\3.树\include\queue.h
+	<iostream>
+
+1509712712 c:\users\lnovo\desktop\github\数据结构\3.树\include\stack.h
+	<iostream>
+
+1511244379 source:c:\users\lnovo\desktop\github\数据结构\3.树的两种遍历顺序构造\main.cpp
+	<iostream>
+	<windows.h>
+	"Queue.h"
+	"Stack.h"
+
+1509627847 c:\users\lnovo\desktop\github\数据结构\3.树的两种遍历顺序构造\include\queue.h
+	<iostream>
+
+1509712712 c:\users\lnovo\desktop\github\数据结构\3.树的两种遍历顺序构造\include\stack.h
+	<iostream>
+

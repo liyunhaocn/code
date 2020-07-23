@@ -1,0 +1,100 @@
+1.√∞≈›≈≈–Ú
+#include<stdio.h>
+int main() {
+	int Array[6] = {1,2,5,8,9,4};
+	int length = 6;
+	int i, j,temp;
+	for (i = 0; i < length-1; i++)
+		for (j = 0; j < length - 1 - i; j++) {
+			if (Array[j] > Array[j + 1]) {
+				temp = Array[j];
+				Array[j] = Array[j + 1];
+				Array[j + 1] = temp;
+			}
+		}
+	for (i = 0; i < 6; i++) {
+		printf("%d\n", Array[i]);
+	}
+	return 0;
+}
+
+
+
+2.—°‘Ò≈≈–Ú
+#include<stdio.h>
+int main() {
+	int Array[6] = { 1,2,5,8,9,4 };
+	int length = 6;
+	int i, j,flag,temp;
+	for (i = 0; i < length - 1; i++) {
+		flag = i;
+		for (j = i + 1; j < length; j++) {
+			if (Array[flag] > Array[j]) {
+				flag = j;
+			}
+		}
+		if (flag != i) {
+			temp = Array[i];
+			Array[i] = Array[flag];
+			Array[flag] = temp;
+		}
+	}
+	for (i = 0; i < 6; i++) {
+		printf("%d\n", Array[i]);
+	}
+	return 0;
+}
+*************************************************************************
+
+3.—°‘Ò≈≈–Ú£®Ω‚ Õ£©
+#include<stdio.h>
+int main() {
+	int Array[6] = { 1,2,5,8,9,4 };
+	int length = 6;
+	int i, j,flag,temp;
+	for (i = 0; i < length - 1; i++) {
+		flag = i;//µ±«∞◊Ó–°
+		for (j = i + 1; j < length; j++) {
+			if (Array[flag] > Array[j]) {
+				flag = j;
+			}
+		}
+		if (flag != i) {
+			temp = Array[i];
+			Array[i] = Array[flag];
+			Array[flag] = temp;
+		}
+	}
+	for (i = 0; i < 6; i++) {
+		printf("%d\n", Array[i]);
+	}
+	return 0;
+}
+
+4.≤Â»Î≈≈–Ú
+#include<stdio.h>
+int main() 
+{
+	int Array[6] = { 1,2,5,8,9,4 };
+	int length = 6;
+	int i, j, temp;
+	for (i = 1; i < length; i++) 
+	{
+		if (Array[i] < Array[i - 1]) 
+		{
+			temp = Array[i];
+			j = i;
+			while (j > 0 && temp < Array[j - 1]) 
+			{
+				Array[j] = Array[j - 1];
+				j--;
+			}
+			Array[j] = temp;
+		}
+	}
+	for (i = 0; i < length; i++) 
+	{
+		printf("%d\n", Array[i]);
+	}
+	return 0;
+}

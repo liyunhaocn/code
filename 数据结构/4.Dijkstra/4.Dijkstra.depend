@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1513749898 source:c:\users\lnovo\desktop\github\coding\数据结构\4.dijkstra\main.cpp
+	<iostream>
+	<queue>
+

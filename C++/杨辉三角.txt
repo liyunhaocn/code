@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+int f(int n)
+{
+	int x=n;
+	if(n>1)
+	{
+	   x=x*f(--n);
+	   return x;
+	}
+	else 
+	{
+		return 1;
+
+	}
+}
+int main()
+{
+	int a;
+	for(int n=0;n<5;n++)
+	{
+		for(int j=0;j<(5-n)*2;j+=2)cout<<'\t';
+		for(int m=0;m<=n;m++)
+		{
+           a=f(n)/f(m)/f(n-m);
+		  cout<<a<<'\t'<<'\t';
+		}
+		cout<<endl<<endl;
+	}
+return 0;
+}

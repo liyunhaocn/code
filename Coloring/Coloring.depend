@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1566564160 source:e:\coding\coloring\main.cpp
+	<bits/stdc++.h>
+	"Solver.h"
+
+1566310179 e:\coding\coloring\include\solver.h
+	<bits/stdc++.h>
+	"Edge.h"
+	"Reader.h"
+	"MyString.h"
+
+1566306975 e:\coding\coloring\include\edge.h
+
+1566306954 source:e:\coding\coloring\src\edge.cpp
+
+1566306310 source:e:\coding\coloring\src\solver.cpp
+	"Solver.h"
+
+1566308056 e:\coding\coloring\include\reader.h
+	<bits/stdc++.h>
+
+1566309386 e:\coding\coloring\include\mystring.h
+
+1566564194 e:\coding\coloring\solver.h
+	<bits/stdc++.h>
+	"Edge.h"
+	"Reader.h"
+	"MyString.h"
+
+1566361145 e:\coding\coloring\edge.h
+
+1566308056 e:\coding\coloring\reader.h
+	<bits/stdc++.h>
+
+1566357498 e:\coding\coloring\mystring.h
+
+1573530001 source:e:\code\coloring\main.cpp
+	<bits/stdc++.h>
+	"Solver.h"
+
+1573530444 e:\code\coloring\solver.h
+	<bits/stdc++.h>
+	"Edge.h"
+	"Reader.h"
+	"MyString.h"
+
+1566361145 e:\code\coloring\edge.h
+
+1566308056 e:\code\coloring\reader.h
+	<bits/stdc++.h>
+
+1566357498 e:\code\coloring\mystring.h
+

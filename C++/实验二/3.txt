@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+class complex                                     	
+{
+public:
+	complex(){}//默认构造函数
+	complex(double real,double imag)//有参构造函数
+	{
+		this->real=real;
+		this->imag=imag;
+	}  
+	complex(complex &a)//复制构造函数
+  	{
+		this->real=a.real;
+		this->imag=a.imag;
+	}  
+	~complex(){}// 析构函数
+	void set()
+	{      
+		   cout<<"请输入实部和虚部"<<endl;
+		   cin>>real>>imag;
+           this->real=real;
+		   this->imag=imag;
+
+	}
+    void show()
+	{
+		cout<<"("<<real<<","<<imag<<")"<<endl;
+	}// 输出复数 -5+3i，4 - i 形式的show
+	void suan(complex &a,char p,complex &b)
+	{
+	  if(p=='+')cout<<"("<<a.real+b.real<<","<<a.imag+b.imag<<")"<<endl;
+	  if(p=='-')cout<<"("<<a.real-b.real<<","<<a.imag-b.imag<<")"<<endl;
+	  if(p=='*')cout<<"("<<a.real*b.real+a.imag*b.imag<<","<<a.imag+b.real+a.real*b.imag<<")"<<endl;
+	  if(p=='/')cout<<"("<<(a.real*b.real+a.imag*b.imag)/(a.real*b.imag*a.real*b.imag+a.imag*b.imag*a.imag*b.imag)<<","<<(-a.imag+b.real+a.real*b.imag)/(a.real*b.imag*a.real*b.imag+a.imag*b.imag*a.imag*b.imag)<<")"<<endl;
+	}// 实现四则运算的成员函数
+private:
+    double real;      //实部
+    double imag;     //虚部
+};
+int main()
+{
+   complex a,b;
+   a.set();
+   b.set();
+   a.suan(a,'+',b);
+   a.suan(a,'-',b);
+   a.suan(a,'*',b);
+   a.suan(a,'/',b);
+
+ return 0;
+}

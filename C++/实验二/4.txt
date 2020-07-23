@@ -1,0 +1,87 @@
+#include <iostream>
+using namespace std;
+class rational
+{
+private:
+    int m,n;
+public:
+   rational(int mm=1,int nn=1)
+{
+    n=nn;m=mm;
+}
+	rational  r_add(rational & p);
+    rational  r_sub(rational & p);
+    void r_mul(rational & p);
+    void r_div(rational &a , rational &b);
+	void simple();	//约分
+	void print();//以分数形式显示，注意约分		//以分数形式显示，注意约分
+	~rational(){}
+};
+void rational::simple()
+{
+    for(int i=2;i<=m&&i<=n;i++)
+    {
+        if(m%i==0&&n%i==0)
+        {
+            m=m/i;
+            n=n/i;
+        }
+    }
+}
+void rational::print()
+{
+    simple();
+    if(n==0)
+        cout<<"分母不能为零"<<endl;
+    else  if(m==0)
+        cout<<"0"<<endl;
+    else if(m==n)
+        cout<<"1"<<endl;
+    else if(m==-n)
+        cout<<"-1"<<endl;
+     else  cout<<m<<"/"<<n<<endl;
+}
+
+rational rational::r_add(rational &p)
+{
+      rational pn;
+      pn.m=m*p.n+p.m*n;
+    pn.n=n*p.n;
+    return pn;
+}
+rational  rational::r_sub(rational & p)
+{
+    rational pn;
+    pn.m=m*p.n-n*p.m;
+    pn.n=n*p.n;
+    return pn;
+}
+void rational::r_mul(rational & p)
+{
+    rational pn;
+    pn.m=p.m*m;
+    pn.n=p.n*n;
+    pn.print();
+}
+void rational::r_div(rational &a , rational &b)
+{
+    rational p(a.m*b.n,a.n*b.m);
+    p.print();
+}
+int main()
+{
+    int mm,nn;
+    cout<<"input the first";
+    cin>>mm>>nn;
+    rational p1(mm,nn);
+    cout<<"input the second";
+    cin>>mm>>nn;
+    rational p2(mm,nn);
+   rational p3=p1.r_add(p2);
+    p3.print();
+    p3=p1.r_sub(p2);
+    p3.print();
+    p1.r_mul(p2);
+    p3.r_div(p1,p2);
+return 0;
+}

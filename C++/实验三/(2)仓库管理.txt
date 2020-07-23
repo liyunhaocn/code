@@ -1,0 +1,85 @@
+//2 商店经销一种货物，货物成箱购进，成箱卖出，
+//购进和卖出时以重量为单位，各箱的重量不一样，单价不一样，
+//因此商店需要记录下目前库存的货物的总重量和总价值。
+//编写一个程序，通过定义类Carlo来模拟商店货物购进和卖出的情况。
+//（本题目主要练习静态数据成员的使用，定义私有变量存每件货物的价格和重量，
+//用静态数据成员存货物的总重量和总价钱，定义构造函数和析构函数，
+//当定义新的对象完成初始化的功能和删除对象时，从总重量和总价钱中减去对象的重量和价格）
+#include<iostream>
+using namespace std;
+class Carlo
+{
+private:
+	static int num;             //仓库内货物箱数
+	static float all_weight;    //仓库内货物总重
+	static float all_values;    //仓库内货物总价值
+	float sin_weight;           //单箱货物重量
+	float sin_value;            //单箱货物售价
+public:
+	//构造函数
+	Carlo(float weight = 0, float value = 0)
+	{
+		//记录单箱货物重量和售价
+		sin_weight = weight;
+		sin_value = value;
+		//加入总和
+		all_weight += weight;
+		all_values += value;
+	}
+	//析构函数
+	~Carlo()
+	{
+		//当货物售出时，从总和中减去相应值
+		all_weight -= sin_weight;
+		all_values -= sin_value;
+	}
+	//设置具体值
+	inline void set(float weight = 0, float value = 0)
+	{
+		//重新设置货物数据
+		//存入一箱货物
+		num++;
+		//减去旧有货物的重量与价值
+		all_weight -= sin_weight;
+		all_values -= sin_value;
+		//更新货物单重与售价
+		sin_weight = weight;
+		sin_value = value;
+		//加入仓库
+		all_weight += sin_weight;
+		all_values += sin_value;
+	}
+	//输出仓库的货物总重与总价值
+	static void disp()
+	{
+		cout << "仓库现存货物：" << endl << "共有" << num << "箱." << endl << "总重为：" << all_weight << "kg" << endl << "总价值为：" << all_values << "RMB" << endl << endl;
+	}
+};
+
+//仓库初始
+int  Carlo::num = 0;
+float Carlo::all_values = 0;
+float Carlo::all_weight = 0;
+
+int main()
+{
+	int num;     //需要存入的货物箱数
+	float weight, value;     //单箱货物重量与价值
+	cout << "请输入需要存入多少箱货物：";
+	cin >> num;
+	Carlo *cage = new Carlo[num];
+
+	//存入
+	for (int i = 0; i < num; i++)
+	{
+		cout << "请输入第" << i + 1 << "箱货物的重量和售价：";
+		cin >> weight >> value;
+		(cage + i)->set(weight, value);
+		Carlo::disp();
+	}
+
+	cout << "货物存放完毕。" << endl;
+	delete[] cage;
+	system("pause");
+	return 0;
+}

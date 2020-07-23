@@ -1,0 +1,125 @@
+/*设计集合类（Set）， 用运算符重载实现并（+），差（-），交（×）等操作，并重载=
+和 -= ， 实现Set S1，S2；… s1 = s2; 和  S1-=S2；集合S1中去掉S2中存在的元素
+的操作。*/
+#include<iostream>
+using namespace std;
+class set
+{
+private:
+	int len;
+	int *a;
+
+public:
+		
+	set(int i1,int i2)
+	{
+		if(i1>i2)
+		{
+          a=NULL;
+		  len=0;
+		}
+		else
+		{   
+			len=i2-i1+1;
+		    a=new int [100];
+	        for(int i=0;i<len;i++)
+			{
+		     a[i]=i1+i;
+			}
+		}
+	}
+	operator+( set b)
+	{
+		int flag=1;
+		for(int i=0;i<b.len;i++)
+		{
+			flag=1;
+			for(int j=0;j<len;j++)
+			{
+				if(b.a[i]==a[j])
+				flag=0;
+			}
+		   if(flag)
+		   {
+		       a[len]=b.a[i];
+			   len++;
+		   }
+		}
+	}
+	operator-( set b)
+	{	
+		int flag=0;
+		for(int i=0;i<len;i++)
+		{
+			flag=0;
+			for(int j=0;j<b.len;j++)
+			{
+				if(a[i]==b.a[j])
+				flag=1;
+			}
+		   if(flag)
+		   {
+			   for(int k=i;k<len;k++)
+		       a[k]=a[k+1];
+			   i--;
+			   len--;
+		   }
+		}
+	}
+	set & operator*( set b)
+	{	
+		int flag=0;
+		set c(0,1);
+		c.len=0;
+		for(int i=0;i<len;i++)
+		{
+			flag=0;
+			for(int j=0;j<b.len;j++)
+			{
+				if(a[i]==b.a[j])
+				flag=1;
+			}
+		   if(flag)
+		   {
+			   c.a[c.len]=a[i];
+			   c.len++;
+		   }
+		}
+		return c;
+	}
+	void disp()
+	{
+	  for(int i=0;i<len;i++)
+		  cout<<a[i]<<" ";
+	  cout<<endl;
+	}
+};
+int main()
+{
+  set a(3,18),b(5,23);
+  set c(9,18),d(5,23);
+  set e(9,18),f(5,23);
+  cout<<"a:"<<endl;
+  a.disp();
+  cout<<"b:"<<endl;
+  b.disp();
+  cout<<"c:"<<endl;
+  c.disp();
+  cout<<"d:"<<endl;
+  d.disp();
+  cout<<"e:"<<endl;
+  e.disp();
+  cout<<"f:"<<endl;
+  f.disp();
+  cout<<"a+b:"<<endl;
+  a+b;
+  a.disp();
+  cout<<"c-d:"<<endl;
+   d-c;
+   d.disp();
+   cout<<"e*f:"<<endl;
+   e=e*f;
+   e.disp();
+   
+	return 0;
+}

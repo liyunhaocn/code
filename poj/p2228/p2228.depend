@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1575373231 source:e:\code\poj\p2228\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+	<limits.h>
+

@@ -1,0 +1,115 @@
+#include<iostream>
+using namespace std;
+class Time
+{
+public:
+	Time(int h,int m,int s):hour(h),minute(m),second(s){}
+	Time(const Time& t);
+	Time operator+(int num);
+	Time operator-(int num);
+	friend ostream& operator<<(ostream& output, Time& t);
+	Time & operator ++ ();
+	Time operator ++(int);
+	Time & operator -- ();
+	Time operator --(int);
+	void adjust();
+
+private:
+	int hour,minute,second;
+};
+Time::Time(const Time & t)
+{
+    hour=t.hour;
+    minute=t.minute;
+    second=t.second;
+}
+Time Time::operator+(int num)
+{
+	Time temp(*this);
+	temp.second+=num;
+	temp.adjust();
+	return temp;
+}
+Time Time::operator -(int num)
+{
+	Time temp(*this);
+	temp.second-=num;
+	temp.adjust();
+	return temp;
+}
+ostream& operator<<(ostream& out,Time &t)
+{
+    out<<t.hour<<":"<<t.minute<<":"<<t.second<<endl;
+    return out;
+}
+Time&  Time::operator++()
+{
+	second++;
+	adjust();
+	return *this;
+}
+Time Time::operator++(int)
+{
+	Time C(*this);
+	second++;
+	adjust();
+ 	return C;
+}
+Time&  Time::operator--()
+{
+	second--;
+	adjust();
+	return *this;
+}
+Time Time::operator--(int)
+{
+	Time C(*this);
+	second--;
+	adjust();
+ 	return C;
+}
+void Time::adjust()
+{
+	int a,b;
+	if(second>=60)
+	{
+		a=second/60;
+		minute+=a;
+		second-=60*a;
+		if(minute>=60)
+		{
+			b=minute/60;
+			hour+=b;
+			minute-=b*60;
+			while(hour>=24)
+				hour-=24;
+		}
+	}
+	else if(second<0)
+	{
+		while(second<0)
+		{
+			minute--;
+			second+=60;
+			if(minute<0)
+			{
+				hour--;
+				minute+=60;
+			}
+		}
+	}
+}
+int  main()
+{
+	Time t1(1,32,12);
+	cout<<t1<<endl;
+	Time t2=t1+2;
+    cout<<t2<<endl;
+    Time t3=t1-1;
+	cout<<t3<<endl;
+	Time t4=(++t1);
+	cout<<t4<<endl;
+	Time t5=(--t1);
+	cout<<t5<<endl;
+	return 0;
+}

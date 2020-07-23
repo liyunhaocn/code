@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1511951878 source:c:\users\lnovo\desktop\github\数据结构\minheap\main.cpp
+	<iostream>
+	<windows.h>
+
+1511952705 source:c:\users\lnovo\desktop\github\数据结构\3.minheap\main.cpp
+	<iostream>
+	<windows.h>
+

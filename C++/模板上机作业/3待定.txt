@@ -1,0 +1,106 @@
+//3 实现类模板：链表类模板
+#include <iostream>
+using namespace std;
+template<class T> // T为结点类型
+struct Node       // 结构结点
+{   
+	Node* pNext;
+    T  data ;
+};
+template<class T>
+class List
+{
+public:
+    List( ){pFirst=NULL;}; ~List( )
+	{
+		cout<<"链表析构中"<<endl;
+	};
+    // 添加结点
+	void Add(T t1)
+    {
+        if(pFirst)
+        {
+            Node<T> *t=new Node<T>;
+            t=pFirst->pNext;
+            while(t->pNext)
+            {
+                t=t->pNext;
+            }
+            Node<T> *t2=new Node<T>;
+            t2->data=t1;
+			t2->pNext=NULL;
+            t->pNext=t2;
+        }
+        else
+        {
+           Node<T> *t=new Node<T>;
+           pFirst=new Node<T>;
+           t->data=t1;t->pNext=NULL;
+           pFirst->pNext=t;
+        }
+    }         
+	
+	// 删除节点
+    void Remove(T t)
+    {
+        Node<T> *p=new Node<T>;
+        p=pFirst;
+        while(p->pNext)
+        {
+            if((p->pNext)->data==t)
+            {
+
+                Node<T> *p1=new Node<T>;
+                p1=p->pNext;
+                if(p1->pNext)
+                {
+                  p->pNext=(p->pNext)->pNext;
+                  delete p1;
+                }
+                else
+                {
+                  delete p1;
+                  p->pNext=NULL;
+                }
+            }
+            p=p->pNext;
+            if(p==NULL)
+                break;
+        }
+
+    } 
+     // 遍历链表
+	void PrintList()
+    {
+          Node<T> *t=new Node<T>;
+          t=pFirst->pNext;
+          while(t)
+          {
+              cout<<t->data<<" ";
+              t=t->pNext;
+          }
+          cout<<endl;
+    }    
+protected:
+     Node<T> *pFirst;       //链首结点指针
+};
+int main()
+{
+    List<int>l;
+    List<char>l1;
+    for(int i=0;i<10;i++)
+    {
+        l.Add(i*i);
+    }
+    for(int j=0;j<10;j++)
+    {
+        l1.Add('a'+j+4);
+    }
+    l.PrintList();
+    l1.PrintList();
+    l.Remove(9);
+    l1.Remove('n');
+    l.PrintList();
+    l1.PrintList();
+    return 0;
+}

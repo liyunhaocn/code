@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1508859860 source:c:\users\lnovo\desktop\github\数据结构\2.18查找子串最后位置\main.cpp
+	<iostream>
+	<string.h>
+

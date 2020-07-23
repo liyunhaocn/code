@@ -1,0 +1,156 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Rational
+{
+public:
+	Rational(int nn=1,int mm=1);
+  	void print() const;
+    Rational operator+(Rational & A);//	Rational  add(Rational & A);
+	Rational operator-();
+	Rational operator*(Rational & A);
+	Rational operator/(Rational & A);
+	bool operator>(Rational &);
+
+	friend Rational  operator-(Rational & a,Rational & b);
+	friend ostream& operator<<(ostream& output, Rational& a);
+	friend bool operator<=( Rational& a,Rational& b);
+	friend bool operator==(Rational& ,Rational& );
+private:
+	void simple(); // 化简
+	int m;   // 分母
+	int n;   // 分子
+};
+
+Rational:: Rational(int nn,int mm )
+{
+	if(m==0)
+	{
+		cout<<"error!"<<endl;
+		return;
+	}
+	m = mm;
+	n=nn;
+	simple();
+}
+void  Rational::simple()
+{
+	int a = m ,b = n, r = 0;
+    if(m<n)
+	{
+		a = n;
+		b = m;
+	}
+	r = a % b ;
+	while ( r != 0 )
+	{
+		a = b ;
+		b = r ;
+		r = a % b ;
+	}
+	n /= b;
+	m /= b;
+}
+void Rational::print() const
+{
+	if(m<0)
+		cout<< -n <<'/'<<-m<<endl;
+    else
+		cout << n <<'/'<<m<<endl;
+}
+
+
+
+// R = A + B
+Rational Rational::operator+(Rational & A)
+{
+	Rational C;
+	C.n = n*A.m+m*A.n;
+	C.m = m*A.m;
+	C.simple();
+	return C;
+}
+// R = A-B
+Rational operator-(Rational & A,Rational & B)
+{
+	Rational C;
+	C.n = A.n*B.m-A.m*B.n;
+	C.m = A.m*B.m;
+	C.simple();
+	return C;
+}
+
+Rational Rational::operator*(Rational & A)
+{
+	Rational C;
+	C.n = n*A.n;
+	C.m = m*A.m;
+	C.simple();
+	return C;
+}
+
+Rational Rational::operator/(Rational & A)
+{
+	Rational C;
+	C.n = n*A.m;
+	C.m = m*A.n;
+	C.simple();
+	return C;
+}
+
+
+//cout<<A;
+ostream& operator<<(ostream& output, Rational& a)
+{
+	if(a.m<0)
+		output<<  -a.n <<'/'<<-a.m<<endl;
+	else if(a.m==1)
+		output<< a.n <<endl;
+	else
+		output << a.n <<'/'<<a.m<<endl;
+	return output;
+}
+//-R
+Rational Rational::operator-()
+{
+	return Rational(-n,m);
+}
+
+// r1>r2
+bool Rational::operator>(Rational& a)
+{
+	return double(n)/m >(double)a.n/a.m ? true : false;
+}
+
+bool operator<=(Rational & A,Rational & B)
+{
+	return double(A.n)/A.m >(double)B.n/B.m ? true : false;
+}
+
+bool operator==(Rational & A,Rational & B)
+{
+	return double(A.n)/A.m==double(B.n)/B.m?true:false;
+}
+
+int main()
+{
+	Rational A(3,6),B(1,-2),C,D;
+	cout<<A<<B<<C;
+	C = A + B ;
+	D = A * B ;
+	cout<<"C = A+B ="<<C<<endl; //   cout<< C+A+B <<endl; // ??
+	cout<<"D = A*B ="<<D<<endl;
+	if(A > B)
+		cout<<"A>B"<<endl;
+	else
+		cout<<"A<=B"<<endl;
+	C = -A;
+	cout<<"C = -A = "<< C<<endl;
+	if(A==C)
+		cout<<"A==C"<<endl;
+	else
+		cout<<"A!=C"<<endl;
+	return 0;
+}
+

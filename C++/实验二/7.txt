@@ -1,0 +1,50 @@
+#include<iostream>
+#include<cString>
+using namespace std;
+
+class Array
+{
+private:
+	  int m_data[10];
+public:
+	  Array();
+	  int& getData(int i);
+      void input();
+	  void print();
+};
+Array::Array()
+{
+     int i;
+	 for(i=0;i<10;i++)
+		 m_data[i]=0;
+}
+int& Array::getData(int i)
+{
+     return m_data[i];
+}
+
+void Array::input()
+{
+	int i;
+	for(i=0;i<10;i++)
+        cin>>m_data[i];
+}
+
+void Array::print()
+{
+	int i;
+	for(i=0;i<10;i++)
+        cout<<m_data[i]<<"\t";
+}
+
+int main()
+{
+	Array a1;
+	a1.input();
+	cout<<"\n"<<"P;ease input i";
+	int i;
+	cin>>i;
+	cout<<a1.getData(i)<<endl;
+	a1.print();
+}
+

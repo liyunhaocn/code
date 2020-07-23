@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1507857402 source:c:\users\lnovo\desktop\github\数据结构\第二章\calculator_zhan\main.cpp
+	<iostream>
+	<string.h>
+
+1507869216 source:c:\users\lnovo\desktop\github\数据结构\第二章\calculator_zhan中缀转后缀\main.cpp
+	<iostream>
+	<string.h>
+	<stdlib.h>
+

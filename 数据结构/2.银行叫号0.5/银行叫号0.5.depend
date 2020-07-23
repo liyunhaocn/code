@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1508322474 source:c:\users\lnovo\desktop\github\数据结构\第二章\银行叫号0.5\main.cpp
+	<iostream>
+	<queue>
+	<vector>
+	<windows.h>
+

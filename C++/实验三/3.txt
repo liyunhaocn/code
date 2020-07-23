@@ -1,0 +1,82 @@
+#include<iostream>
+using namespace std;
+class date  
+{
+public:
+	int month,day,year;
+	date(int month,int day ,int year);
+	virtual ~date();
+	void set1();
+	
+};
+class person  
+{
+public:
+	~person();
+    int number; 
+    char* name; 
+    char sex;
+    date birthday;
+	person(int month,int day,int year);
+	void set();
+	void display();
+};
+
+date::date(int month,int day ,int year)
+{
+  this->day=day;
+  this->year=year;
+  this->month=month;
+}
+date::~date()
+{
+
+}
+void date::set1()
+{
+  cout<<"请输入生日 (年 月 日)"<<endl;
+  cin>>year;
+  cin>>month;
+  cin>>day;
+}
+person::person(int month,int day,int year):birthday(month,day,year)
+{
+	name=new char[10];
+}
+
+person::~person()
+{
+ delete []name;
+}
+void person::set()
+{
+  cout<<"请输入编号"<<endl;
+  cin>>number;
+  cout<<"请输入性别"<<endl;
+  cin>>sex;
+  cout<<"请输入姓名"<<endl;
+  cin>>name;
+  birthday.set1();
+}
+
+void person::display()
+{
+	cout<<number<<' ';
+	cout<<name<<' ';
+	cout<<sex<<' ';
+	cout<<birthday.year<<"年"<<birthday.month<<"月"<<birthday.day<<"日"<<endl;
+}
+
+int main()
+{
+	person per[3]=
+	{
+	   person(4,5,6),
+	   person(3,4,5),
+	   person(5,6,7),
+	};
+	per[0].set();
+	per[0].display();
+	
+	return 0;
+}

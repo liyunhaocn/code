@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1554858732 source:e:\coding\dutoj\p1287\main.cpp
+	<iostream>
+	<stdio.h>
+	<string>
+	<string.h>
+

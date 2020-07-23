@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1558194908 source:e:\coding\dutoj\p1019\main.cpp
+	<iostream>
+	<stdio.h>
+	<limits.h>
+

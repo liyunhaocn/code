@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1508928792 source:c:\users\lnovo\desktop\github\数据结构\2.文本编辑器\main.cpp
+	<iostream>
+	<list>
+	<string.h>
+	<stdio.h>
+

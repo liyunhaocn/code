@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1512008318 source:c:\users\lnovo\desktop\github\数据结构\栈实现计算器带括号fromgithub\main.cpp
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+

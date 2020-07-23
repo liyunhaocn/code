@@ -1,0 +1,68 @@
+#include<stdio.h>
+struct student
+{
+   int iNum;
+   float fScore;
+   struct student * next;
+};
+struct student * create()  //创建链表
+{
+   struct student * phead=0,*ptemp,*ptail=0;
+   int iNumtemp;
+   float fScoretemp;
+   printf("input number and score\n");
+   scanf("%d",&iNumtemp);
+   scanf("%f",&fScoretemp);
+   while(fScoretemp>0)
+   {
+     ptemp=(struct student *)malloc(sizeof(struct student));
+     ptemp->iNum=iNumtemp;
+     ptemp->fScore=fScoretemp;
+	 ptemp->next=0;
+	 if(phead==NULL)
+        phead=ptail=ptemp;
+	 else
+	 {
+		 ptail->next=ptemp;//最后一个节点的指针指向下一个结点
+	     ptail=ptemp;//尾指针指向下一结点
+	 }
+   printf("input num and score\n");
+   scanf("%d",&iNumtemp);
+   scanf("%f",&fScoretemp);
+   }
+return phead;
+}
+void list(struct student*phead)   //遍历链表，此处的为形参，并不改变传入的实参的值，
+{                                //所以传入的指针在函数结束之后依然指向第一个结点
+	while(phead)
+	{
+		printf("%d\t%f\t\n",phead->iNum,phead->fScore);
+		phead=phead->next;
+	}
+
+
+}
+struct student * search(struct student * p,float fScoretemp)
+{
+  while(p)
+  {
+      if(p->fScore==fScoretemp)
+		  break;
+	  p=p->next;
+  }
+  return p;
+}
+
+int main()
+{
+  struct student stutemp;
+  struct student *phead,*result;
+  float fScoretemp;
+  int iNumtemp;
+  phead=create();
+  list(phead);
+  result=search(phead,3.6);
+  if(result)
+	  printf("%d\t%f\n",result->iNum,result->fScore);
+return 0;
+}

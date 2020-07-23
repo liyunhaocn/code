@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+class Date
+{
+private:
+	int year,month,day;
+public:
+	Date(int i,int j,int k):year(i),month(j),day(k){}
+	void nextday();
+	void disp()
+	{
+	  cout<<year<<"/"<<month<<"/"<<day<<endl;
+	}
+};
+void Date::nextday()
+{
+	int totaldays[2][12]={{31,28,31,30,31,30,31,31,30,31,30,31},{31,29,31,30,31,30,31,31,30,31,30,31}};\
+		day++;
+	int  leap=(year%400==0||year%4==0&&year%100!=0);
+	if(day>totaldays[leap][month-1])
+	{
+	  day=1;
+	  month++;
+	  if(month>12)
+	  {
+	    month=1;
+		year++;
+	  }
+	}
+}
+
+int main()
+{
+  int y,m,d;
+  cout<<"请输入年 月 日:"<<endl;
+  cin>>y>>m>>d;
+  Date d1(y,m,d);
+  d1.disp();
+  d1.nextday();
+  cout<<"明天是:"<<endl;
+  d1.disp();
+return 0;
+}

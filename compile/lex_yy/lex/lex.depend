@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1537847052 source:e:\coding\compile\lex_yy\lex\main.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+

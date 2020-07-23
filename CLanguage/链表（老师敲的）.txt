@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include<math.h>
+struct student{
+  int num;
+  float score;
+  struct student * next;
+};
+int main(){
+	struct student *h,*t,*pre;
+	int tn,i;	float ts;
+	ts=1.0+2.0;
+	h=(struct student*)malloc(sizeof(struct student));
+	h->next=0;
+    scanf("%d",&tn);scanf("%f",&ts);
+	while(tn!=0)
+	{
+       t=(struct student*)malloc(sizeof(struct student));
+	   t->num=tn;  t->score=ts; 
+	   t->next=h->next; h->next=t;
+       scanf("%d",&tn);scanf("%f",&ts);
+	 }
+	//±éÀú
+    t=h->next;
+	while(t){
+	  printf("%d\n",t->num);t=t->next;
+	}
+	//²éÕÒ
+    printf("²éÕÒ\n");
+	t=h->next;
+	while(t){
+	  if(fabs(t->score-3.6)<1e-6)
+		  printf("%d\n",t->num);
+	  t=t->next;
+	}
+	printf("É¾³ý 3.6\n");
+    //É¾³ý 3.6
+    t=h->next;pre=h;
+	while(t){
+	  if(fabs(t->score-3.6)<1e-6)
+	  {pre->next=t->next;free(t);t=pre->next;}
+	  else
+	  {t=t->next; pre=pre->next;}
+	}
+    //±éÀú
+	printf("±éÀú\n");
+    t=h->next;
+	
+	while(t){
+	  printf("%d\n",t->num);t=t->next;
+	}
+}
