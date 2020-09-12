@@ -22,8 +22,7 @@
 using namespace std;
 
 using LL = long long int;
-#define debug(x) cout<<#x<<": "<<x<<endl;
-
+#define debug(x) cout<<#x<<": "<<(x)<<endl;
 
 struct Random {
 public:
@@ -31,7 +30,6 @@ public:
 
 	Random(LL seed) : rgen(seed) {}
 	Random() : rgen(generateSeed()) {}
-
 
 	static LL generateSeed() {
 		unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
@@ -59,54 +57,44 @@ public:
 } myRand;
 
 
-vector<LL> getRand(LL range, LL len) {
-    vector<LL> ve(range,0);
+LL a1 = 10;
+LL a2 = 10;
+LL mod = 20;
 
-    for (LL i = 0; i < range; i++) {
-        ve[i] = i;
+LL sub(LL a,LL b){
+    a -= b%mod;
+    if (a < 0) {
+        a %= mod;
+        if (a < 0) {
+            a += mod;
+        }
     }
-
-    vector<LL> ret;
-    ret.reserve(len);
-    while (ret.size() < len) {
-        LL index = myRand.pick(range - ret.size());
-        ret.push_back(ve[index]);
-        swap(ve[index],ve[ve.size()-1]);
-    }
-
-    return ret;
-    //return vector<LL>(ve.begin(), ve.begin() + len);
-}
-
-vector<LL> getRand1(LL range, LL len) {
-
-    if (range < len) {
-        debug("len out of range")
-            vector<LL> temp;
-        return temp;
-    }
-
-    LL index = myRand.pick(range);
-    vector<LL> ret;
-    ret.reserve(len);
-    LL step = range / len;
-    ret.reserve(len);
-
-    for (LL i = index; ret.size() < len; i += myRand.pick(step) + 1) {
-        ret.push_back(i%range);
-    }
-    return ret;
-    //return vector<LL>(ve.begin(), ve.begin() + len);
+    return a;
 }
 
 int main()
 {
-    vector<LL> nums = {1,2,3,4,5,6,7,8,9};
-    swap(nums[2],nums.back());
-    for(auto i: nums){
-        cout<<i<<" ";
+    vector<LL> arr = {1,12,10,2,5,6,9,15,100,200};
+
+    for(LL i=0;i<arr.size();i++){
+        LL b = arr[i];
+        a1 = a1 + (b%mod);
+        a1 %= mod;
+        debug(a1)
     }
-    cout<<endl;
-    //debug(ret)
-    return 0;        //最终的结果是：608.100000
+    a2 = a1;
+
+    for(LL i=0;i<arr.size();i++){
+        LL b = arr[i];
+        a1 = a1 + mod - (b%mod);
+        a1 %= mod;
+        a2 = sub(a2,b);
+
+        debug(a1)
+        debug(a2)
+        debug(b)
+    }
+    debug(a1)
+    debug(a2)
+    return 0;
 }
